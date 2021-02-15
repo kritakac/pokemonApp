@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PokemonServiceImpl implements PokemonService {
@@ -22,6 +23,18 @@ public class PokemonServiceImpl implements PokemonService {
     @Override
     public void savePokemon(Pokemon pokemon) {
         this.pokemonRepository.save(pokemon);
+    }
+
+    @Override
+    public Pokemon getPokemonById(long id) {
+        Optional<Pokemon> optional = pokemonRepository.findById(id);
+        Pokemon pokemon = null;
+        if(optional.isPresent()) {
+            pokemon = optional.get();
+        }else {
+            throw new RuntimeException(" Pokemon not found for id :: " + id);
+        }
+        return pokemon;
     }
 
 

@@ -13,11 +13,15 @@
                 <thead>
                     <tr>
                         <th>Name</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="pokemon : ${listPokemons}">
                         <td th:text="${pokemon.name}"></td>
+                        <td>
+                            <a th:href="@{/showFormForUpdate/{id}(id=${pokemon.id})}" class="btn btn-primary">Update</a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
