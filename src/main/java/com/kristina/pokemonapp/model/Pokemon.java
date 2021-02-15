@@ -13,6 +13,9 @@ public class Pokemon {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "type")
+    private String type;
+
     public long getId() {
         return id;
     }
@@ -27,5 +30,13 @@ public class Pokemon {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
